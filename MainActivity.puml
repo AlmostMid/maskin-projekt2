@@ -1,0 +1,23 @@
+@startuml
+
+
+start
+
+:loadedDeck = empty;
+:deckLoaded = false;
+:gameRunning = true;
+
+while(Program Active)
+
+:startUpPhase;
+
+if (loadedDeck not empty?) is (true) then
+
+:playPhase;
+
+endif
+
+endwhile
+
+stop 
+@enduml
