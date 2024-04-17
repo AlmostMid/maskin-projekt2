@@ -10,4 +10,42 @@
 
 #include <stdbool.h>
 
+
+
+// Definition of struct for Card
+struct ListCard{
+
+    char value;
+    char suit;
+
+    bool faceDown;
+    bool existsInGame;
+
+    struct ListCard *next;
+    struct ListCard *prev;
+};
+
+
+// Structure of Linked List
+
+typedef struct{
+    struct ListCard *tail;
+    struct ListCard *head;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #endif
