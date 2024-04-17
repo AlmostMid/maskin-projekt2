@@ -1,0 +1,20 @@
+@startuml
+
+[*] --> StartupPhase
+
+
+StartupPhase --> PlayPhase : Command P 
+StartupPhase : 1. LD <filename>
+StartupPhase : 2. SW
+StartupPhase : 3. SI <split>
+StartupPhase : 4. SR
+StartupPhase : 5. SD <filename>
+StartupPhase : 6. QQ
+StartupPhase : 7. P
+PlayPhase --> [*]
+PlayPhase : 8. Q
+PlayPhase : 9. <Game Moves>
+PlayPhase --> StartupPhase : Command Q OR Win game
+
+
+@enduml
