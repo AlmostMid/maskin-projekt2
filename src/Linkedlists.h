@@ -31,7 +31,27 @@ struct ListCard{
 typedef struct{
     struct ListCard *tail;
     struct ListCard *head;
-}
+} Linked_list;
+
+Linked_list *createLinkedList();
+
+void appendCard(Linked_list *list, struct ListCard card);
+
+void prependCard(Linked_list *list, struct ListCard card);
+
+void insertNode(Linked_list *list, struct ListCard *nodeToInsert, struct ListCard *previousNode, bool insertBefore);
+
+void removeNode(Linked_list *list);
+
+void deleteLinkedList(Linked_list *list);
+
+void LinkedListToString(Linked_list *list);
+
+struct ListCard *findNodeFromCard(Linked_list *list, char value, char suit);
+
+bool moveCardFromOneLinkedListToAnother(Linked_list *from, struct ListCard *cardFrom, Linked_list *to);
+
+#endif //YUKON_LINKEDLIST_H
 
 
 
