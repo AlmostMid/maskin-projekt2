@@ -6,4 +6,9 @@ set(CMAKE_C_STANDARD 11)
 add_executable(maskin_projekt2
         main.c
         src/deck.c
-        src/deck.h)
+        src/deck.h
+        src/Linkedlists.h
+        src/Linkedlists.c
+        src/gameCommands.h
+        src/gameCommands.c
+        src/view.c)

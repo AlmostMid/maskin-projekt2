@@ -12,12 +12,6 @@ Linked_list *createLinkedList() {
     return newLinkedList;
 }
 
-/**
- * Add a new node to the end of and existing list based on the card pointer.
- * @author s215797 Mikael Fangel
- * @param list list to add new node to
- * @param card card to add as node to the list
- */
 void appendCard(Linked_list *list, struct ListCard card) {
     struct ListCard *newCard = (struct ListCard *) malloc(sizeof(struct ListCard));
 
@@ -41,12 +35,6 @@ void appendCard(Linked_list *list, struct ListCard card) {
     list->size++;
 }
 
-/**
- * Add a new node to the begging of and existing list based on the card pointer.
- * @author s215797 Mikael Fangel
- * @param list list to add new node to
- * @param card card to add as node to the list
- */
 void prependCard(Linked_list *list, struct ListCard card) {
     struct ListCard *newCard = (struct ListCard *) malloc(sizeof(struct ListCard));
 
@@ -70,14 +58,6 @@ void prependCard(Linked_list *list, struct ListCard card) {
     list->size++;
 }
 
-/**
- * Inserts a node in an existing linked list either before of after another specified node in the list.
- * @author s215797 Mikael Fangel
- * @param list list to perform insert on
- * @param nodeToInsert node to added to linked list
- * @param previousNode node before the node to insert
- * @param insertBefore should the node be insert before or after
- */
 void insertNode(Linked_list *list, struct ListCard *nodeToInsert, struct ListCard *previousNode, bool insertBefore) {
     struct ListCard *nodeCopy = (struct ListCard *) malloc(sizeof(struct ListCard));
 
@@ -111,11 +91,6 @@ void insertNode(Linked_list *list, struct ListCard *nodeToInsert, struct ListCar
     list->size++;
 }
 
-/**
- * Removes a node of the end of the list.
- * @author s215797 Mikael Fangel
- * @param list list to remove node from
- */
 void removeNode(Linked_list *list) {
     if (list->size == 0) {
         return;
@@ -135,11 +110,6 @@ void removeNode(Linked_list *list) {
     }
 }
 
-/**
- * Delete an entire linked list and all of its nodes using the remove node function
- * @author s215797 Mikael Fangel
- * @param list list to the delete
- */
 void deleteLinkedList(Linked_list *list) {
     while (list->size > 0) {
         removeNode(list);
@@ -148,13 +118,6 @@ void deleteLinkedList(Linked_list *list) {
     free(list);
 }
 
-/**
- * Finds a node in a linked list based on the searchCard value
- * @authors s215805 Mads Sørensen (20%), s215797 Mikael Fangel (80%)
- * @param list list to search
- * @param searchCard searchCard to find
- * @return the node in the linked list if found and NULL if node is not in the list
- */
 struct ListCard *findNodeFromCard(Linked_list *list, char value, char suit) {
     struct ListCard *card = list->head;
     while (card != NULL) {
@@ -166,14 +129,6 @@ struct ListCard *findNodeFromCard(Linked_list *list, char value, char suit) {
     return NULL;
 }
 
-/**
- * Moves a card from anywhere in a linked list to the end of another
- * @author s215797 Mikael Fangel
- * @param from list to move from
- * @param cardFrom card to move
- * @param to list to move to
- * @return true if successful and fall if unsuccessful
- */
 bool moveCardFromOneLinkedListToAnother(Linked_list *from, struct ListCard *cardFrom, Linked_list *to) {
     bool result = false;
     struct ListCard *prevNode = to->tail;
@@ -216,11 +171,6 @@ bool moveCardFromOneLinkedListToAnother(Linked_list *from, struct ListCard *card
     return result;
 }
 
-/**
- * Prints the cards each on one new line
- * @authors s215805 Mads Sørensen (90%), s215797 Mikael Fangel (10%)
- * @param list
- */
 void LinkedListToString(Linked_list *list) {
     struct ListCard *card = list->head;
     while (card != NULL) {
