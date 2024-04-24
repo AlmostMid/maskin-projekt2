@@ -127,7 +127,7 @@ Linked_list *loadDeck(FILE *fptr) {
             else {
                 strcat(strcpy(buffer, "ERROR! Invalid card found on line "), num);
             }
-            generateEmptyView("LD", buffer);
+            emptyView("LD", buffer);
             deleteLinkedList(cardDeck);
             free(num); // Free allocated memory
             return NULL;
@@ -138,7 +138,7 @@ Linked_list *loadDeck(FILE *fptr) {
     }
 
     if (cardDeck->size != 4 * SUIT_SIZE) {
-        generateEmptyView("LD", "ERROR! CardDeck doesn't match the deck size of 52");
+        emptyView("LD", "ERROR! CardDeck doesn't match the deck size of 52");
         deleteLinkedList(cardDeck);
         return NULL;
     }
