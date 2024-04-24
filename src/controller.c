@@ -16,9 +16,7 @@ bool playPhase(Linked_list **loadedDeck);
 
 bool checkIfWinner(Linked_list *foundations[]);
 
-/**
- * @authors s215812 Silja Sandersen (45%), s215805 Mads Sørensen (25%), s215797 Mikael Fangel (30%)
- */
+
 int main(void) {
 // Source: https://intellij-support.jetbrains.com/hc/en-us/community/posts/115000763330-Debugger-not-working-on-Windows-CLion-
 #if defined(_WIN32) || defined(_WIN64)
@@ -42,11 +40,7 @@ int main(void) {
     return 0;
 }
 
-/**
- * Runs the startUpPhase of the game where the player is allowed to load decks and shuffle them
- * @param loadedDeck currently loaded deck
- * @param gameRunning the current running state of the game
- */
+
 bool startUpPhase(Linked_list **loadedDeck, bool *deckLoaded) {
     char command[256] = {0}, arg[256] = {0}, buf[256] = {0};
 
@@ -104,11 +98,7 @@ bool startUpPhase(Linked_list **loadedDeck, bool *deckLoaded) {
     }
 }
 
-/**
- * Runs the runs the play phase of the game to allow players to move cards and disable not allowed commands
- * @param loadedDeck currently loaded deck
- * @param gameRunning the current running state of the game
- */
+
 bool playPhase(Linked_list **loadedDeck) {
     Linked_list **column_lists = P(*loadedDeck);
     Linked_list *foundation_lists[4] = {createLinkedList(), createLinkedList(),
