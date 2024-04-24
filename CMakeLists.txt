@@ -11,4 +11,6 @@ add_executable(maskin_projekt2
         src/gameCommands.h
         src/gameCommands.c
         src/view.c
-        src/controller.c)
+        src/controller.c
+        src/main.c
+)

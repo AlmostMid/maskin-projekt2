@@ -10,12 +10,9 @@ bool startUpPhase(Linked_list **loadedDeck, bool *deckLoaded);
 
 bool playPhase(Linked_list **loadedDeck);
 
-bool checkIfWinner(Linked_list *foundations[]);
+bool checkWinner(Linked_list *foundations[]);
 
-int main(void) {
-#if defined(_WIN32) || defined(_WIN64)
-    setbuf(stdout, 0);
-#endif
+void runYukonGame() {
 
     Linked_list *loadedDeck = createLinkedList();
     bool deckLoaded = false;
@@ -29,8 +26,6 @@ int main(void) {
         if (gameRunning)
             gameRunning = playPhase(&loadedDeck);
     }
-
-    return 0;
 }
 
 bool startUpPhase(Linked_list **loadedDeck, bool *deckLoaded) {
@@ -127,7 +122,7 @@ bool playPhase(Linked_list **loadedDeck) {
             gameMoves(buf, column_lists, foundation_lists);
         }
 
-        bool winner = checkIfWinner(foundation_lists);
+        bool winner = checkWinner(foundation_lists);
         if (winner) {
             emptyView("", "Game Won");
             return !winner;
@@ -135,7 +130,7 @@ bool playPhase(Linked_list **loadedDeck) {
     }
 }
 
-bool checkIfWinner(Linked_list *foundations[]) {
+bool checkWinner(Linked_list *foundations[]) {
     int filledFoundations = 0;
     for (int i = 0; i < 4; i++) {
         if (foundations[i]->size == SUIT_SIZE)
