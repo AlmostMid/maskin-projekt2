@@ -22,9 +22,9 @@ Linked_list *SI(Linked_list *, int split);
 
 bool moveValidation(struct ListCard *from, struct ListCard *to, bool toFoundation);
 
-int convertCardValue(char value);
-
 bool gameMoves(char buf[], Linked_list **column_lists, Linked_list **foundation_lists);
+
+int convertCardValue(char value);
 
 
 #endif //MASKIN_PROJEKT2_GAMECOMMANDS_H

@@ -46,7 +46,7 @@ void fillSuit() {
 
 int checkCard(struct ListCard *deck_card) {
     int suit;
-    switch (deck_card->suit[0]) {
+    switch (deck_card->suit) {
         case 'C' :
             suit = 0;
             break;
@@ -114,7 +114,7 @@ Linked_list *loadDeck(FILE *fptr) {
     while (fgets(line, sizeof(line), fptr) != NULL) {
         struct ListCard newCard;
         newCard.value = line[0];
-        newCard.suit[0] = line[1];
+        newCard.suit = line[1];
 
         char buffer[40];
         char *num;
@@ -154,7 +154,7 @@ void saveDeck(Linked_list *list, FILE *fptr) {
     while (node != NULL) {
         struct ListCard *card = node;
         line[0] = card->value;
-        line[1] = card->suit[0];
+        line[1] = card->suit;
         fwrite(line, 1, sizeof(line), fptr);
         node = node->next;
     }
