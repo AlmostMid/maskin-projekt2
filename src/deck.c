@@ -46,7 +46,7 @@ void fillSuit() {
 
 int checkCard(struct ListCard *deck_card) {
     int suit;
-    switch (deck_card->suit[0]) {
+    switch (deck_card->suit) {
         case 'C' :
             suit = 0;
             break;
@@ -114,7 +114,7 @@ Linked_list *loadDeck(FILE *fptr) {
     while (fgets(line, sizeof(line), fptr) != NULL) {
         struct ListCard newCard;
         newCard.value = line[0];
-        newCard.suit[0] = line[1];
+        newCard.suit = line[1];
 
         char buffer[40];
         char *num;
@@ -127,7 +127,7 @@ Linked_list *loadDeck(FILE *fptr) {
             else {
                 strcat(strcpy(buffer, "ERROR! Invalid card found on line "), num);
             }
-            generateEmptyView("LD", buffer);
+            emptyView("LD", buffer);
             deleteLinkedList(cardDeck);
             free(num); // Free allocated memory
             return NULL;
@@ -138,7 +138,7 @@ Linked_list *loadDeck(FILE *fptr) {
     }
 
     if (cardDeck->size != 4 * SUIT_SIZE) {
-        generateEmptyView("LD", "ERROR! CardDeck doesn't match the deck size of 52");
+        emptyView("LD", "ERROR! CardDeck doesn't match the deck size of 52");
         deleteLinkedList(cardDeck);
         return NULL;
     }
@@ -154,7 +154,7 @@ void saveDeck(Linked_list *list, FILE *fptr) {
     while (node != NULL) {
         struct ListCard *card = node;
         line[0] = card->value;
-        line[1] = card->suit[0];
+        line[1] = card->suit;
         fwrite(line, 1, sizeof(line), fptr);
         node = node->next;
     }

@@ -10,11 +10,11 @@
 #include "Linkedlists.h"
 
 #define SUIT_SIZE 13
-typdef struct {
+typedef struct {
     char suit;
     char value;
     bool faceUp;
-    bool exist;
+    bool exists;
 } Card;
 
 extern Card clubs [SUIT_SIZE];
@@ -27,7 +27,7 @@ extern Card * deck[4];
 void fillSuits();
 Linked_list *loadDeck(FILE *);
 
-void  saveDeck(Linkd_list * list, FILE *fptr);
+void  saveDeck(Linked_list * list, FILE *fptr);
 
 int checkCard(struct ListCard *deck_card);
 

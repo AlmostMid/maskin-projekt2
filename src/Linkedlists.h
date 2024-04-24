@@ -1,8 +1,5 @@
-// Defining only if not defined
 #ifndef YUKON_LINKEDLIST_H
 #define YUKON_LINKEDLIST_H
-
-
 
 #include <stdio.h>
 
@@ -23,14 +20,18 @@ struct ListCard{
 
     struct ListCard *next;
     struct ListCard *prev;
+    bool exists;
 };
 
 
 // Structure of Linked List
 
 typedef struct{
+    int size;
     struct ListCard *tail;
     struct ListCard *head;
+
+
 } Linked_list;
 
 Linked_list *createLinkedList();
@@ -52,20 +53,3 @@ struct ListCard *findNodeFromCard(Linked_list *list, char value, char suit);
 bool moveCardFromOneLinkedListToAnother(Linked_list *from, struct ListCard *cardFrom, Linked_list *to);
 
 #endif //YUKON_LINKEDLIST_H
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#endif
