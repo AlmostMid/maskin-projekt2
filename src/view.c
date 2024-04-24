@@ -30,7 +30,7 @@ void emptyView(char lastCommand[], char message[]) {
 void showDeck(Linked_list *deck_list, char command[], char statusMessage[]) {
     // Creates an empty view
     if (deck_list == NULL) {
-        emptyView(command, "ERROR! No deck of cards is loaded");
+        emptyView(command, "No deck of cards is loaded");
         return;
     }
 

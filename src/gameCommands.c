@@ -51,10 +51,10 @@ Linked_list *LD(char arg[], int numOfInputs) {
 
 Linked_list *SI(Linked_list *firstPile, int split) {
     if (split <= 0) {
-       emptyView("SI", "ERROR! Not able to split on 0 or non-numbers.");
+       emptyView("SI", "Not able to split on 0 or non-numbers.");
         return NULL;
     } else if (split >= firstPile->size) {
-        emptyView("SI", "ERROR! Number bigger than the number of cards in the deck.");
+        emptyView("SI", "Number bigger than the number of cards in the deck.");
         return NULL;
     }
 
@@ -189,13 +189,6 @@ bool gameMoves(char buf[], Linked_list **column_lists, Linked_list **foundation_
     char command[256];
     strcpy(command, buf);
 
-    /** GameMove stored in 2D char array
-     * gameMove[0] from column, eg C3
-     * gameMove[1] from card, ex 2H
-     * gameMove[2] to column, ex C4 or F2
-     * Full command ex: C3:2H -> C4
-     * Initialize with 0.
-     */
     char gameMove[3][3] = {0};
 
     token = strtok(buf, delimiters);
@@ -245,7 +238,7 @@ bool gameMoves(char buf[], Linked_list **column_lists, Linked_list **foundation_
             fromCard[0] = fromList->tail->value;
             fromCard[1] = fromList->tail->suit;
         } else {
-            generatePlayView(column_lists, foundation_lists, command, "ERROR. Invalid <FROM> command.");
+            generatePlayView(column_lists, foundation_lists, command, "Invalid <FROM> command.");
             return false;
         }
         // If <FROM> is C, then we check <TO> for either C or F. If none, then we can error handle
@@ -254,7 +247,7 @@ bool gameMoves(char buf[], Linked_list **column_lists, Linked_list **foundation_
             toList = foundation_lists[to];
             toFoundation = true;
         } else {
-            generatePlayView(column_lists, foundation_lists, command, "ERROR. Invalid <TO> command.");
+            generatePlayView(column_lists, foundation_lists, command, "Invalid <TO> command.");
             return false;
         }
     } else if ((gameMove[0][0] == 'F' || gameMove[0][0] == 'f') &&
