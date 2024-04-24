@@ -11,3 +11,17 @@
 1	69	1713953421128897706	CMakeFiles/maskin_projekt2.dir/src/main.c.o	1a3d3b923dce6815
 0	70	1713953421130586584	CMakeFiles/maskin_projekt2.dir/src/controller.c.o	edb1a18379d2ed2
 70	105	1713953421166453151	maskin_projekt2	8c2fc5b3b691b6b5
+1	192	1713954094153593073	CMakeFiles/maskin_projekt2.dir/src/main.c.o	1a3d3b923dce6815
+1	192	1713954094154465730	CMakeFiles/maskin_projekt2.dir/src/deck.c.o	53aadd43d249fd0d
+1	193	1713954094154763519	CMakeFiles/maskin_projekt2.dir/src/view.c.o	45271b74224107c3
+1	193	1713954094155064057	CMakeFiles/maskin_projekt2.dir/src/controller.c.o	edb1a18379d2ed2
+1	194	1713954094156140379	CMakeFiles/maskin_projekt2.dir/src/gameCommands.c.o	6091385c6721f5c
+194	234	1713954094197507641	maskin_projekt2	8c2fc5b3b691b6b5
+1	45	1713954156287500684	CMakeFiles/maskin_projekt2.dir/src/main.c.o	1a3d3b923dce6815
+0	45	1713954156288363008	CMakeFiles/maskin_projekt2.dir/src/deck.c.o	53aadd43d249fd0d
+1	45	1713954156289002084	CMakeFiles/maskin_projekt2.dir/src/view.c.o	45271b74224107c3
+1	46	1713954156289905658	CMakeFiles/maskin_projekt2.dir/src/controller.c.o	edb1a18379d2ed2
+1	48	1713954156291562640	CMakeFiles/maskin_projekt2.dir/src/gameCommands.c.o	6091385c6721f5c
+48	78	1713954156321986936	maskin_projekt2	8c2fc5b3b691b6b5
+2	159	1713954784180763801	CMakeFiles/maskin_projekt2.dir/src/gameCommands.c.o	6091385c6721f5c
+159	197	1713954784220483873	maskin_projekt2	8c2fc5b3b691b6b5

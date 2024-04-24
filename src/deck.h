@@ -31,7 +31,7 @@ void  saveDeck(Linked_list * list, FILE *fptr);
 
 int checkCard(struct ListCard *deck_card);
 
-int convertCardASCIItoDecimal(char vardValue);
+int convertASCII(char vardValue);
 
 
 #endif //MASKIN_PROJEKT2_DECK_H

@@ -24,7 +24,7 @@ void emptyView(char lastCommand[], char message[]) {
         }
     }
 
-    printCommandConsole(lastCommand, message);
+    printCC(lastCommand, message);
 }
 
 void showDeck(Linked_list *deck_list, char command[], char statusMessage[]) {
@@ -77,11 +77,11 @@ void showDeck(Linked_list *deck_list, char command[], char statusMessage[]) {
             printf("\n");
         }
     }
-    printCommandConsole(command, statusMessage);
+    printCC(command, statusMessage);
 }
 
 void generatePlayView(Linked_list *C_ptr[7], Linked_list *F_ptr[4], char lastCommand[], char message[]) {
-    max_num_of_rows = calculateMaxNumOfRows(C_ptr);
+    max_num_of_rows = calculateMaxRows(C_ptr);
 
     clearView();
     generateColumns();
@@ -153,10 +153,10 @@ void generatePlayView(Linked_list *C_ptr[7], Linked_list *F_ptr[4], char lastCom
             printf("\n");
         }
     }
-    printCommandConsole(lastCommand, message);
+    printCC(lastCommand, message);
 }
 
-int calculateMaxNumOfRows(Linked_list *columns[NUM_OF_COLUMNS]) {
+int calculateMaxRows(Linked_list *columns[NUM_OF_COLUMNS]) {
     int maxNumOfRows = 0;
     for (int i = 0; i < NUM_OF_COLUMNS; ++i) {
         Linked_list *tmp = columns[i];
@@ -174,7 +174,7 @@ void generateColumns() {
 }
 
 // Only used within this module
-void printCommandConsole(char lastCommand[], char message[]) {
+void printCC(char lastCommand[], char message[]) {
     printf("\nLAST Command: %s \n", lastCommand);
     printf("Message: %s \n", message);
     printf("INPUT > ");

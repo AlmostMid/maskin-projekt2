@@ -23,7 +23,7 @@ Linked_list *LD(char arg[], int numOfInputs) {
                 return NULL;
             }
         } else {
-            emptyView("LD", "The file tried loading dosen't exsits");
+            emptyView("LD", "Loaded file does not exists");
             return NULL;
         }
 
@@ -51,10 +51,10 @@ Linked_list *LD(char arg[], int numOfInputs) {
 
 Linked_list *SI(Linked_list *firstPile, int split) {
     if (split <= 0) {
-       emptyView("SI", "ERROR! You can't split on zero or something that ain't a number.");
+       emptyView("SI", "ERROR! Not able to split on 0 or non-numbers.");
         return NULL;
     } else if (split >= firstPile->size) {
-        emptyView("SI", "ERROR! You can't split on a number bigger than the number of cards in the deck.");
+        emptyView("SI", "ERROR! Number bigger than the number of cards in the deck.");
         return NULL;
     }
 
@@ -245,7 +245,7 @@ bool gameMoves(char buf[], Linked_list **column_lists, Linked_list **foundation_
             fromCard[0] = fromList->tail->value;
             fromCard[1] = fromList->tail->suit;
         } else {
-            generatePlayView(column_lists, foundation_lists, command, "ERROR. Not a valid <FROM> command.");
+            generatePlayView(column_lists, foundation_lists, command, "ERROR. Invalid <FROM> command.");
             return false;
         }
         // If <FROM> is C, then we check <TO> for either C or F. If none, then we can error handle
@@ -254,7 +254,7 @@ bool gameMoves(char buf[], Linked_list **column_lists, Linked_list **foundation_
             toList = foundation_lists[to];
             toFoundation = true;
         } else {
-            generatePlayView(column_lists, foundation_lists, command, "ERROR. Not a valid <TO> command.");
+            generatePlayView(column_lists, foundation_lists, command, "ERROR. Invalid <TO> command.");
             return false;
         }
     } else if ((gameMove[0][0] == 'F' || gameMove[0][0] == 'f') &&
@@ -267,7 +267,7 @@ bool gameMoves(char buf[], Linked_list **column_lists, Linked_list **foundation_
         fromCard[0] = tempCard->value;
         fromCard[1] = tempCard->suit;
     } else {
-        generatePlayView(column_lists, foundation_lists, command, "It was not a valid command to move");
+        generatePlayView(column_lists, foundation_lists, command, "Is not a valid move");
         return false;
     }
     // Search for the node in the specified column
@@ -279,7 +279,7 @@ bool gameMoves(char buf[], Linked_list **column_lists, Linked_list **foundation_
 
     // Check for card not found
     if (nodeFrom == NULL) {
-        generatePlayView(column_lists, foundation_lists, command, "Card wasen't found");
+        generatePlayView(column_lists, foundation_lists, command, "Card not found");
         return false;
     }
 
@@ -303,8 +303,8 @@ bool moveValidation(struct ListCard *from, struct ListCard *to, bool toFoundatio
     if (to == NULL && from->value == 'K' && !toFoundation) return true;
     if (to == NULL) return false;
 
-    int fromValue = convertCardASCIItoDecimal(from->value) + 1;
-    int toValue = convertCardASCIItoDecimal(to->value) + 1;
+    int fromValue = convertASCII(from->value) + 1;
+    int toValue = convertASCII(to->value) + 1;
 
     int diff = toValue - fromValue;
 

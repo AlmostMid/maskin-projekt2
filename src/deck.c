@@ -63,7 +63,7 @@ int checkCard(struct ListCard *deck_card) {
             return 2;
     }
 
-    int value = convertCardASCIItoDecimal(deck_card->value);
+    int value = convertASCII(deck_card->value);
     if (value == -1) return 2;
 
     if (!deck[suit][value].exists) {
@@ -73,7 +73,7 @@ int checkCard(struct ListCard *deck_card) {
     } else return 1;
 }
 
-int convertCardASCIItoDecimal(char cardValue) {
+int convertASCII(char cardValue) {
     int value;
     // 65 = A and 97 = a
     if (cardValue == 'A' || cardValue == 'a') {
