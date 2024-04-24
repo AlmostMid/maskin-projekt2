@@ -121,7 +121,7 @@ Linked_list *loadDeck(FILE *fptr) {
 
         int check = checkCard(&newCard);
 
-        if (check != 0 && asprintf(&num, "%d", lineNum) != -1) {
+        if (check != 0 && sprintf(&num, "%d", lineNum) != -1) {
             if (check == 1)
                 strcat(strcpy(buffer, "ERROR! Duplicate card found on line "), num);
             else {

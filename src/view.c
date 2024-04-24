@@ -4,7 +4,7 @@
 int max_num_of_rows;
 const int NUM_OF_COLUMNS = 7;
 
-void generateEmptyView(char lastCommand[], char message[]) {
+void emptyView(char lastCommand[], char message[]) {
     clearView();
     generateColumns();
     int Fnum = 1;
@@ -30,7 +30,7 @@ void generateEmptyView(char lastCommand[], char message[]) {
 void showDeck(Linked_list *deck_list, char command[], char statusMessage[]) {
     // Creates an empty view
     if (deck_list == NULL) {
-        generateEmptyView(command, "ERROR! No deck of cards is loaded");
+        emptyView(command, "ERROR! No deck of cards is loaded");
         return;
     }
 
