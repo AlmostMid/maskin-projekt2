@@ -29,9 +29,13 @@ struct ListCard{
 // Structure of Linked List
 
 typedef struct{
+
     struct ListCard *tail;
     struct ListCard *head;
-}
+
+    int size;
+    
+} LinkedList;
 
 
 
