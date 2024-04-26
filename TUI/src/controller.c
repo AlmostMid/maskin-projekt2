@@ -71,12 +71,12 @@ bool startUpPhase(Linked_list **loadedDeck, bool *deckLoaded) {
             showDeck(*loadedDeck, "SD", "Deck has been saved.");
 
         } else if (strcasecmp("QQ", command) == 0) {
-            puts("Qutting Yukon...");
+            puts("Ending Yukon...");
             return false;
         } else if (*deckLoaded && strcasecmp("P", command) == 0) {
             return true;
         } else {
-            emptyView("", "Invalid command");
+            emptyView("", "Error! Invalid command");
         }
     }
 }
@@ -104,7 +104,7 @@ bool playPhase(Linked_list **loadedDeck) {
             || strcasecmp("SI", command) == 0 || strcasecmp("SR", command) == 0
             || strcasecmp("SD", command) == 0) {
             generatePlayView(column_lists, foundation_lists,
-                             command, "Command not available in the PLAY phase");
+                             command, "ERROR! Command not available in the PLAY phase");
         } else if (strcasecmp("QQ", command) == 0) {
             puts("Ending Yukon...");
             return false;
