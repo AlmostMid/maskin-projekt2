@@ -1,0 +1,10 @@
+# ninja log v5
+0	43	7356636671292681	build.ninja	eedc01c404069ce5
+166	225	1713956040145480346	maskin_projekt2	8c2fc5b3b691b6b5
+12	83	7356636955773958	CMakeFiles/maskin_projekt2.dir/src/Linkedlists.c.obj	dafc309b7ff34855
+20	88	7356636955833956	CMakeFiles/maskin_projekt2.dir/src/view.c.obj	9e42294db6497bff
+3	89	7356636955843956	CMakeFiles/maskin_projekt2.dir/src/deck.c.obj	5fc07776bfffee7f
+27	92	7356636955873945	CMakeFiles/maskin_projekt2.dir/src/main.c.obj	dc0f1f8cb3de4df1
+24	96	7356636955903967	CMakeFiles/maskin_projekt2.dir/src/controller.c.obj	4b8c3b75d616f9fc
+15	97	7356636955914149	CMakeFiles/maskin_projekt2.dir/src/gameCommands.c.obj	7d666e90e8b742c3
+97	188	7356636956787901	maskin_projekt2.exe	da82a038345257c2
