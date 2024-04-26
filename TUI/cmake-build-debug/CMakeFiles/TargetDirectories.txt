@@ -1,3 +1,0 @@
-C:/Users/eren/CLionProjects/maskin-projekt2/cmake-build-debug/CMakeFiles/maskin_projekt2.dir
-C:/Users/eren/CLionProjects/maskin-projekt2/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/eren/CLionProjects/maskin-projekt2/cmake-build-debug/CMakeFiles/rebuild_cache.dir

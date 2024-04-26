@@ -1,3 +1,0 @@
-C:/Users/eren/CLionProjects/YukonGUI/cmake-build-debug/CMakeFiles/YukonGUI.dir
-C:/Users/eren/CLionProjects/YukonGUI/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/eren/CLionProjects/YukonGUI/cmake-build-debug/CMakeFiles/rebuild_cache.dir
