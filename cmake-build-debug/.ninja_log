@@ -1,0 +1,9 @@
+# ninja log v5
+0	43	1714131505434750525	build.ninja	eedc01c404069ce5
+1	38	1714131505475921741	CMakeFiles/maskin_projekt2.dir/TUI/src/main.c.o	868da5e429fe4814
+0	42	1714131505479071058	CMakeFiles/maskin_projekt2.dir/TUI/src/controller.c.o	d29b513e1e525266
+1	42	1714131505478350761	CMakeFiles/maskin_projekt2.dir/TUI/src/view.c.o	4d2480a3ef90ed73
+1	42	1714131505479738356	CMakeFiles/maskin_projekt2.dir/TUI/src/deck.c.o	f686fb37a1607a6c
+1	42	1714131505479571896	CMakeFiles/maskin_projekt2.dir/TUI/src/Linkedlists.c.o	c3aa4ac3237a75b0
+1	44	1714131505482935174	CMakeFiles/maskin_projekt2.dir/TUI/src/gameCommands.c.o	3eb72e70f31f1f6e
+44	76	1714131505514825979	maskin_projekt2	6f0a9a561195912f

@@ -1,3 +1,3 @@
-/Users/kasparasm/Desktop/2. semester/Maskinnær projekt/maskin-projekt2/cmake-build-debug/CMakeFiles/maskin_projekt2.dir
-/Users/kasparasm/Desktop/2. semester/Maskinnær projekt/maskin-projekt2/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/kasparasm/Desktop/2. semester/Maskinnær projekt/maskin-projekt2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/victormazanti/Documents/GitHub/maskin-projekt2/cmake-build-debug/CMakeFiles/maskin_projekt2.dir
+/Users/victormazanti/Documents/GitHub/maskin-projekt2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/victormazanti/Documents/GitHub/maskin-projekt2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
