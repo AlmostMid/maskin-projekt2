@@ -110,6 +110,25 @@ void removeNode(Linked_list *list) {
     }
 }
 
+void deleteLinkedList(Linked_list *list) {
+    while (list->size > 0) {
+        removeNode(list);
+    }
+
+    free(list);
+}
+
+struct ListCard *findNodeFromCard(Linked_list *list, char value, char suit) {
+    struct ListCard *card = list->head;
+    while (card != NULL) {
+        if (card->value == value && card->suit == suit) {
+            return card;
+        }
+        card = card->next;
+    }
+    return NULL;
+}
+
 bool moveCardFromOneLinkedListToAnother(Linked_list *from, struct ListCard *cardFrom, Linked_list *to) {
     bool result = false;
     struct ListCard *prevNode = to->tail;
@@ -151,26 +170,6 @@ bool moveCardFromOneLinkedListToAnother(Linked_list *from, struct ListCard *card
 
     return result;
 }
-
-void deleteLinkedList(Linked_list *list) {
-    while (list->size > 0) {
-        removeNode(list);
-    }
-
-    free(list);
-}
-
-struct ListCard *findNodeFromCard(Linked_list *list, char value, char suit) {
-    struct ListCard *card = list->head;
-    while (card != NULL) {
-        if (card->value == value && card->suit == suit) {
-            return card;
-        }
-        card = card->next;
-    }
-    return NULL;
-}
-
 
 void LinkedListToString(Linked_list *list) {
     struct ListCard *card = list->head;
