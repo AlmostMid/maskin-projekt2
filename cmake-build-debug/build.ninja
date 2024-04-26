@@ -49,11 +49,41 @@ cmake_ninja_workdir = /Users/victormazanti/Documents/GitHub/maskin-projekt2/cmak
 
 build cmake_object_order_depends_target_maskin_projekt2: phony || CMakeFiles/maskin_projekt2.dir
 
-build CMakeFiles/maskin_projekt2.dir/main.c.o: C_COMPILER__maskin_projekt2_unscanned_Debug /Users/victormazanti/Documents/GitHub/maskin-projekt2/main.c || cmake_object_order_depends_target_maskin_projekt2
-  DEP_FILE = CMakeFiles/maskin_projekt2.dir/main.c.o.d
+build CMakeFiles/maskin_projekt2.dir/src/deck.c.o: C_COMPILER__maskin_projekt2_unscanned_Debug /Users/victormazanti/Documents/GitHub/maskin-projekt2/src/deck.c || cmake_object_order_depends_target_maskin_projekt2
+  DEP_FILE = CMakeFiles/maskin_projekt2.dir/src/deck.c.o.d
   FLAGS = -g -std=gnu11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles/maskin_projekt2.dir
-  OBJECT_FILE_DIR = CMakeFiles/maskin_projekt2.dir
+  OBJECT_FILE_DIR = CMakeFiles/maskin_projekt2.dir/src
+
+build CMakeFiles/maskin_projekt2.dir/src/Linkedlists.c.o: C_COMPILER__maskin_projekt2_unscanned_Debug /Users/victormazanti/Documents/GitHub/maskin-projekt2/src/Linkedlists.c || cmake_object_order_depends_target_maskin_projekt2
+  DEP_FILE = CMakeFiles/maskin_projekt2.dir/src/Linkedlists.c.o.d
+  FLAGS = -g -std=gnu11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/maskin_projekt2.dir
+  OBJECT_FILE_DIR = CMakeFiles/maskin_projekt2.dir/src
+
+build CMakeFiles/maskin_projekt2.dir/src/gameCommands.c.o: C_COMPILER__maskin_projekt2_unscanned_Debug /Users/victormazanti/Documents/GitHub/maskin-projekt2/src/gameCommands.c || cmake_object_order_depends_target_maskin_projekt2
+  DEP_FILE = CMakeFiles/maskin_projekt2.dir/src/gameCommands.c.o.d
+  FLAGS = -g -std=gnu11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/maskin_projekt2.dir
+  OBJECT_FILE_DIR = CMakeFiles/maskin_projekt2.dir/src
+
+build CMakeFiles/maskin_projekt2.dir/src/view.c.o: C_COMPILER__maskin_projekt2_unscanned_Debug /Users/victormazanti/Documents/GitHub/maskin-projekt2/src/view.c || cmake_object_order_depends_target_maskin_projekt2
+  DEP_FILE = CMakeFiles/maskin_projekt2.dir/src/view.c.o.d
+  FLAGS = -g -std=gnu11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/maskin_projekt2.dir
+  OBJECT_FILE_DIR = CMakeFiles/maskin_projekt2.dir/src
+
+build CMakeFiles/maskin_projekt2.dir/src/controller.c.o: C_COMPILER__maskin_projekt2_unscanned_Debug /Users/victormazanti/Documents/GitHub/maskin-projekt2/src/controller.c || cmake_object_order_depends_target_maskin_projekt2
+  DEP_FILE = CMakeFiles/maskin_projekt2.dir/src/controller.c.o.d
+  FLAGS = -g -std=gnu11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/maskin_projekt2.dir
+  OBJECT_FILE_DIR = CMakeFiles/maskin_projekt2.dir/src
+
+build CMakeFiles/maskin_projekt2.dir/src/main.c.o: C_COMPILER__maskin_projekt2_unscanned_Debug /Users/victormazanti/Documents/GitHub/maskin-projekt2/src/main.c || cmake_object_order_depends_target_maskin_projekt2
+  DEP_FILE = CMakeFiles/maskin_projekt2.dir/src/main.c.o.d
+  FLAGS = -g -std=gnu11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/maskin_projekt2.dir
+  OBJECT_FILE_DIR = CMakeFiles/maskin_projekt2.dir/src
 
 
 # =============================================================================
@@ -63,7 +93,7 @@ build CMakeFiles/maskin_projekt2.dir/main.c.o: C_COMPILER__maskin_projekt2_unsca
 #############################################
 # Link the executable maskin_projekt2
 
-build maskin_projekt2: C_EXECUTABLE_LINKER__maskin_projekt2_Debug CMakeFiles/maskin_projekt2.dir/main.c.o
+build maskin_projekt2: C_EXECUTABLE_LINKER__maskin_projekt2_Debug CMakeFiles/maskin_projekt2.dir/src/deck.c.o CMakeFiles/maskin_projekt2.dir/src/Linkedlists.c.o CMakeFiles/maskin_projekt2.dir/src/gameCommands.c.o CMakeFiles/maskin_projekt2.dir/src/view.c.o CMakeFiles/maskin_projekt2.dir/src/controller.c.o CMakeFiles/maskin_projekt2.dir/src/main.c.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk
   OBJECT_DIR = CMakeFiles/maskin_projekt2.dir
   POST_BUILD = :

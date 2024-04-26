@@ -1,0 +1,27 @@
+@startuml
+object Card {
+    suit
+    value
+}
+
+object Deck {
+    cards
+}
+
+object Foundation {
+    suit
+    cards
+}
+
+
+object Game {
+    deck
+    foundations
+    piles
+}
+
+Deck -- Card
+Foundation -- Card
+Game -- Deck
+Game -- Foundation
+@enduml
