@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "Your configuration name",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/path/to/SDL2/include"  // Add this line, adjust the path as necessary
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "${default}"
+        }
+    ],
+    "version": 4
+}

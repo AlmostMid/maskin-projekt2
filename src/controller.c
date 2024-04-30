@@ -5,6 +5,20 @@
 #include "view.h"
 #include "deck.h"
 #include "gameCommands.h"
+#include "controller.h"
+
+typedef struct GameState GameState;
+// Assuming you expose the necessary states from controller.c
+extern Linked_list *loadedDeck; // Make this accessible if it's part of the state you need
+extern Linked_list *column_lists[7]; // Same for columns, if they are stored globally
+extern Linked_list *foundation_lists[4]; // And foundations
+
+void exposeGameState() {
+    // This function could initialize or simply return a pointer to the game state
+    // For simplicity, assume they're already initialized and exposed as extern
+}
+
+
 
 bool startUpPhase(Linked_list **loadedDeck, bool *deckLoaded);
 
@@ -81,6 +95,7 @@ bool startUpPhase(Linked_list **loadedDeck, bool *deckLoaded) {
     }
 }
 
+
 bool playPhase(Linked_list **loadedDeck) {
     Linked_list **column_lists = P(*loadedDeck);
     Linked_list *foundation_lists[4] = {createLinkedList(), createLinkedList(),
@@ -139,3 +154,11 @@ bool checkWinner(Linked_list *foundations[]) {
 
     return filledFoundations == 4;
 }
+
+
+void renderCards(Linked_list *columns[7], Linked_list *foundations[4]) {
+    // Call the appropriate view function to render the game state
+    generatePlayView(columns, foundations, "Last Command", "Status Message");
+}
+
+
