@@ -5,7 +5,10 @@
 #ifndef MASKIN_PROJEKT2_CONTROLLER_H
 #define MASKIN_PROJEKT2_CONTROLLER_H
 
+#include <stdbool.h>
+
 void runYukonGame();
+bool playPhase();
 
 
 #endif //MASKIN_PROJEKT2_CONTROLLER_H

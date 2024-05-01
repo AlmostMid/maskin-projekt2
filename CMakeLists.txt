@@ -13,4 +13,8 @@ add_executable(maskin_projekt2
         src/view.c
         src/controller.c
         src/main.c
+        src/socket.c
+        src/socket.h
 )
+
+target_link_libraries(maskin_projekt2 wsock32 ws2_32)

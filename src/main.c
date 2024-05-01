@@ -10,12 +10,13 @@
 #include "gameCommands.h"
 #include "controller.h"
 
-int main(void){
+int main(void) {
 #if defined(_WIN32) || defined(_WIN64)
     setbuf(stdout, 0);
 #endif
 
-    runYukonGame();
+    // Start the socket server
+    start_socket();
 
     return 0;
 }
