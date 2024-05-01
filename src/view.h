@@ -15,12 +15,12 @@ void showDeck(Linked_list *deck_list, char command[], char statusMessage[]);
 
 void generatePlayView(Linked_list *C_ptr[7], Linked_list *F_ptr[4], char lastCommand[], char message[]);
 
-int calculateMaxRows(Linked_list *columns[]);
+int determineMaxRows(Linked_list *columns[]);
 
 void generateColumns();
 
 void clearView();
 
-void printCC(char lastCommand[], char message[]);
+void displayInputLine(char lastCommand[], char message[]);
 
 #endif //MASKIN_PROJEKT2_VIEW_H

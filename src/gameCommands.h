@@ -20,7 +20,7 @@ Linked_list **P(Linked_list *);
 
 Linked_list *SI(Linked_list *, int split);
 
-bool moveValidation(struct ListCard *from, struct ListCard *to, bool toFoundation);
+bool isMoveValid(struct ListCard *from, struct ListCard *to, bool toFoundation);
 
 bool gameMoves(char buf[], Linked_list **column_lists, Linked_list **foundation_lists);
 

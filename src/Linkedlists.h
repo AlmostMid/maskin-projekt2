@@ -7,9 +7,6 @@
 
 #include <stdbool.h>
 
-
-
-// Definition of struct for Card
 struct ListCard{
 
     char value;
@@ -23,8 +20,6 @@ struct ListCard{
     bool exists;
 };
 
-
-// Structure of Linked List
 
 typedef struct{
     int size;
@@ -50,6 +45,6 @@ void LinkedListToString(Linked_list *list);
 
 struct ListCard *findNodeFromCard(Linked_list *list, char value, char suit);
 
-bool moveCardFromOneLinkedListToAnother(Linked_list *from, struct ListCard *cardFrom, Linked_list *to);
+bool moveCardBetweenLists(Linked_list *from, struct ListCard *cardFrom, Linked_list *to);
 
 #endif //YUKON_LINKEDLIST_H
