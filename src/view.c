@@ -1,120 +1,104 @@
 #include "view.h"
 
-// Variable to store the maximum number of rows in the view
+// If a deck of more than (7 columns * 8 rows) = 56 cards is desired, increase this constant
 int max_num_of_rows;
-// Constant representing the number of columns in the game
 const int NUM_OF_COLUMNS = 7;
 
-// Function to display an empty view
 void emptyView(char lastCommand[], char message[]) {
-    // Clear the view
     clearView();
-    // Generate the columns
     generateColumns();
     int Fnum = 1;
     max_num_of_rows = 7;
 
-    // Loop through rows
     for (int i = 1; i <= max_num_of_rows; i++) {
-        // Print tabs for alignment with columns
         for (int j = 0; j < NUM_OF_COLUMNS; ++j) {
             printf("\t");
         }
 
-        // Print foundation slots on odd rows
         if (i % 2 == 1 && i < 8) {
             printf("\t[]\tF%d\n", Fnum);
             Fnum++;
-        } else {
+        }
+        else {
             printf("\n");
         }
     }
 
-    // Display input line and status message
-    displayInputLine(lastCommand, message);
+    printCC(lastCommand, message);
 }
 
-// Function to display the deck
 void showDeck(Linked_list *deck_list, char command[], char statusMessage[]) {
-    // Check if the deck is empty
+    // Creates an empty view
     if (deck_list == NULL) {
-        // Display empty view with message
         emptyView(command, "No deck of cards is loaded");
         return;
     }
 
-    // Clear the view
     clearView();
-    // Generate the columns
     generateColumns();
 
+    // Foundation number
     int Fnum = 1;
     struct ListCard *current_card = deck_list->tail;
     char value, suit;
-    // Calculate the maximum number of rows based on deck size
     max_num_of_rows = (int) deck_list->size / 7 + 1;
     max_num_of_rows = max_num_of_rows > 7 ? max_num_of_rows : 7;
 
-    // Loop through rows
+    // Loop determining whether a foundation should be printed or not
     for (int i = 1; i <= max_num_of_rows; i++) {
-        // Loop through columns
+        // Loop to print the cards in the columns
         for (int j = 0; j < NUM_OF_COLUMNS; ++j) {
-            // Check if current card exists
             if (current_card == NULL) {
                 printf("\t");
                 continue;
             }
 
-            // Determine card value and suit to display
+            // Show faceUp
             if (strcasecmp("SW", command) == 0) {
                 value = current_card->value;
                 suit = current_card->suit;
-            } else {
-                suit = ']';
+            }
+                // Show faceDown
+            else {
                 value = '[';
+                suit = ']';
             }
 
-            // Print card value and suit
             printf("%c%c\t", value, suit);
             current_card = current_card->prev;
         }
 
-        // Print foundation slots on odd rows
+        // Only prints if uneven and less than 8. Only 4 foundations should be printed.
         if (i % 2 == 1 && i < 8) {
             printf("\t[]\tF%d\n", Fnum);
             Fnum++;
-        } else {
+        }
+        else {
             printf("\n");
         }
     }
-
-    // Display input line and status message
-    displayInputLine(command, statusMessage);
+    printCC(command, statusMessage);
 }
 
-// Function to generate the play view
 void generatePlayView(Linked_list *C_ptr[7], Linked_list *F_ptr[4], char lastCommand[], char message[]) {
-    // Determine the maximum number of rows required
-    max_num_of_rows = determineMaxRows(C_ptr);
+    max_num_of_rows = calculateMaxRows(C_ptr);
 
-    // Clear the view
     clearView();
-    // Generate the columns
     generateColumns();
 
     Linked_list *current_column;
     struct ListCard *current_card;
-    int foundNum = 1;
+    int F_num = 1;
     char value, suit;
 
-    // Loop through rows
+    // This loop is for Foundations
     for (int i = 1; i <= max_num_of_rows; i++) {
-        // Loop through columns
+
+        // This loop is for Columns
         for (int j = 0; j < NUM_OF_COLUMNS; ++j) {
-            // Get the current column
             current_column = C_ptr[j];
 
-            // Get the card at the current row
+            // Check if NULL
             if (current_column != NULL) {
                 current_card = current_column->head;
                 for (int k = 0; k < i - 1; ++k) {
@@ -124,56 +108,55 @@ void generatePlayView(Linked_list *C_ptr[7], Linked_list *F_ptr[4], char lastCom
                 }
             }
 
-            // Check if current card exists
             if (current_card == NULL || current_column == NULL) {
                 printf("\t");
                 continue;
             }
 
-            // Determine card value and suit to display
+            // Check if faceUp or faceDown
             if (current_card->faceDown == false) {
-                suit = current_card->suit;
                 value = current_card->value;
-            } else {
-                suit = ']';
+                suit = current_card->suit;
+            }
+            else {
                 value = '[';
+                suit = ']';
             }
 
-            // Print card value and suit
             printf("%c%c\t", value, suit);
         }
 
-        // Print foundation slots on odd rows
+        // Prints foundations
+        Linked_list *current_foundation;
+        struct ListCard *foundation_Card = NULL;
         if (i % 2 == 1 && i < 8) {
-            // Get the current foundation
-            Linked_list *current_foundation = F_ptr[foundNum - 1];
-            struct ListCard *foundation_Card = NULL;
+            current_foundation = F_ptr[F_num - 1];
 
-            // Get the card in the foundation
+            // Check if NULL
             if (current_foundation->tail != NULL) {
                 foundation_Card = current_foundation->tail;
             }
 
-            // Print foundation card or empty slot
             if (foundation_Card == NULL) {
-                printf("\t[]\tF%d\n", foundNum);
-            } else {
-                suit = foundation_Card->suit;
-                value = foundation_Card->value;
-                printf("\t%c%c\tF%d\n", value, suit, foundNum);
+                printf("\t[]\tF%d\n", F_num);
+                F_num++;
+                continue;
             }
-            foundNum++;
-        } else {
+            else {
+                value = foundation_Card->value;
+                suit = foundation_Card->suit;
+                printf("\t%c%c\tF%d\n", value, suit, F_num);
+            }
+            F_num++;
+        }
+        else {
             printf("\n");
         }
     }
-
-    // Display input line and status message
-    displayInputLine(lastCommand, message);
+    printCC(lastCommand, message);
 }
 
-// Function to determine the maximum number of rows needed to display the columns
-int determineMaxRows(Linked_list *columns[]) {
+int calculateMaxRows(Linked_list *columns[NUM_OF_COLUMNS]) {
     int maxNumOfRows = 0;
     for (int i = 0; i < NUM_OF_COLUMNS; ++i) {
         Linked_list *tmp = columns[i];
@@ -183,7 +166,6 @@ int determineMaxRows(Linked_list *columns[]) {
     return maxNumOfRows > 7 ? maxNumOfRows : 7;
 }
 
-// Function to generate column labels
 void generateColumns() {
     for (int i = 1; i <= 7; ++i) {
         printf("C%d\t", i);
@@ -191,14 +173,13 @@ void generateColumns() {
     printf("\n\n");
 }
 
-// Function to display input line and status message
-void displayInputLine(char lastCommand[], char message[]) {
+// Only used within this module
+void printCC(char lastCommand[], char message[]) {
     printf("\nLAST Command: %s \n", lastCommand);
     printf("Message: %s \n", message);
     printf("INPUT > ");
 }
 
-// Function to clear the view
 void clearView() {
     printf("\n\n\n\n\n\n");
 

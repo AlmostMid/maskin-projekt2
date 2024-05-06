@@ -45,6 +45,6 @@ void LinkedListToString(Linked_list *list);
 
 struct ListCard *findNodeFromCard(Linked_list *list, char value, char suit);
 
-bool moveCardBetweenLists(Linked_list *from, struct ListCard *cardFrom, Linked_list *to);
+bool moveCardFromOneLinkedListToAnother(Linked_list *from, struct ListCard *cardFrom, Linked_list *to);
 
 #endif //YUKON_LINKEDLIST_H
