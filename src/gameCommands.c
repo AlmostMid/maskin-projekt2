@@ -49,66 +49,66 @@ Linked_list *LD(char arg[], int numOfInputs) {
     return deckLoader; // Return the loaded deck
 }
 
-// Function to split a deck into two and shuffle them together in a specific way
 Linked_list *SI(Linked_list *firstPile, int split) {
-    if (split <= 0) {
-        emptyView("SI", "Not able to split on 0 or non-numbers.");
-        return NULL;
-    } else if (split >= firstPile->size) {
-        emptyView("SI", "Number bigger than the number of cards in the deck.");
+    if (split <= 0 || split >= firstPile->size) {
+        emptyView("SI", "ERROR! Split index out of bounds.");
         return NULL;
     }
 
+    // Create a new linked list for the second half
     Linked_list *secondPile = createLinkedList();
+    struct ListCard *current = firstPile->head;
 
-    struct ListCard *card = firstPile->head;
-    for (int i = 0; i < split; ++i) {
-        card = card->next;
+    // Move to the split point
+    for (int i = 0; i < split - 1; i++) {
+        current = current->next;
     }
 
-    moveCardBetweenLists(firstPile, card, secondPile);
+    // Set the head of the second pile
+    secondPile->head = current->next;
+    current->next = NULL;  // Split the first pile
 
-    Linked_list *shuffledPile = createLinkedList();
-    while (firstPile->size > 0 || secondPile->size > 0) {
-        if (firstPile->size > 0) {
-            prependCard(shuffledPile, *firstPile->tail);
-            removeNode(firstPile);
-        }
-        if (secondPile->size > 0) {
-            prependCard(shuffledPile, *secondPile->tail);
-            removeNode(secondPile);
-        }
-    }
+    // Recalculate the sizes
+    secondPile->size = firstPile->size - split;
+    firstPile->size = split;
 
-    deleteLinkedList(firstPile);
-    deleteLinkedList(secondPile);
-
-    return shuffledPile;
+    return secondPile;
 }
 
-// Function to randomly shuffle a deck
+
 Linked_list *SR(Linked_list *unshuffledPile) {
-    Linked_list *shuffledPile = createLinkedList();
-    srand(time(0)); // Seed for randomness
+    int count = unshuffledPile->size;
+    struct ListCard **cardArray = malloc(sizeof(struct ListCard *) * count);
+    struct ListCard *current = unshuffledPile->head;
 
-    struct ListCard *node = unshuffledPile->tail;
-    while (node != NULL) {
-        int placement = rand() % (shuffledPile->size + 1);
-
-        struct ListCard *shuffNode = shuffledPile->head;
-        for (int i = 0; i < placement - 1; i++) {
-            shuffNode = shuffNode->next;
-        }
-
-        int before = rand() % 2;
-        insertNode(shuffledPile, node, shuffNode, before);
-
-        node = node->prev;
+    // Fill the array with pointers to the cards
+    for (int i = 0; i < count; i++) {
+        cardArray[i] = current;
+        current = current->next;
     }
 
-    deleteLinkedList(unshuffledPile);
-    return shuffledPile;
+    // Fisher-Yates shuffle algorithm
+    for (int i = count - 1; i > 0; i--) {
+        int j = rand() % (i + 1);
+        struct ListCard *temp = cardArray[i];
+        cardArray[i] = cardArray[j];
+        cardArray[j] = temp;
+    }
+
+    // Re-link the cards
+    for (int i = 0; i < count - 1; i++) {
+        cardArray[i]->next = cardArray[i + 1];
+    }
+    cardArray[count - 1]->next = NULL;  // Last card points to NULL
+
+    // Set the new head and tail
+    unshuffledPile->head = cardArray[0];
+    unshuffledPile->tail = cardArray[count - 1];
+
+    free(cardArray);
+    return unshuffledPile;
 }
+
 
 // Function to save a deck to a specified file
 void SD(Linked_list *list, char arg[]) {
