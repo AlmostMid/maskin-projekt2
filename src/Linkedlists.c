@@ -58,7 +58,7 @@ void prependCard(Linked_list *list, struct ListCard card) {
     list->size++;
 }
 
-void insertNode(Linked_list *list, struct ListCard *nodeToInsert, struct ListCard *previousNode, bool insertBefore) {
+void addNode(Linked_list *list, struct ListCard *nodeToInsert, struct ListCard *previousNode, bool insertBefore) {
     struct ListCard *nodeCopy = (struct ListCard *) malloc(sizeof(struct ListCard));
 
     *nodeCopy = *nodeToInsert;
@@ -91,7 +91,7 @@ void insertNode(Linked_list *list, struct ListCard *nodeToInsert, struct ListCar
     list->size++;
 }
 
-void removeNode(Linked_list *list) {
+void deleteNode(Linked_list *list) {
     if (list->size == 0) {
         return;
     } else {
@@ -110,11 +110,10 @@ void removeNode(Linked_list *list) {
     }
 }
 
-bool moveCardFromOneLinkedListToAnother(Linked_list *from, struct ListCard *cardFrom, Linked_list *to) {
+bool moveCardToAnotherList(Linked_list *from, struct ListCard *cardFrom, Linked_list *to) {
     bool result = false;
     struct ListCard *prevNode = to->tail;
 
-    // Checks how many nodes that are going to be moved so that we can calculate the new list size
     int cardsMoved = 1;
     struct ListCard *lastMovedCard = cardFrom;
     while (lastMovedCard->next != NULL) {
@@ -122,7 +121,6 @@ bool moveCardFromOneLinkedListToAnother(Linked_list *from, struct ListCard *card
         lastMovedCard = lastMovedCard->next;
     }
 
-    // Ends function if not found and to allow error handling
     if (cardFrom != NULL) {
         // Detach node from its list
         if (cardFrom->prev != NULL)
@@ -154,13 +152,13 @@ bool moveCardFromOneLinkedListToAnother(Linked_list *from, struct ListCard *card
 
 void deleteLinkedList(Linked_list *list) {
     while (list->size > 0) {
-        removeNode(list);
+        deleteNode(list);
     }
 
     free(list);
 }
 
-struct ListCard *findNodeFromCard(Linked_list *list, char value, char suit) {
+struct ListCard *findNode(Linked_list *list, char value, char suit) {
     struct ListCard *card = list->head;
     while (card != NULL) {
         if (card->value == value && card->suit == suit) {

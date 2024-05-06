@@ -18,18 +18,20 @@ typedef struct {
 } Card;
 
 extern Card clubs [SUIT_SIZE];
-extern Card diamonds [SUIT_SIZE];
 extern Card hearts [SUIT_SIZE];
 extern Card spades [SUIT_SIZE];
+extern Card diamonds [SUIT_SIZE];
+
 
 extern Card * deck[4];
 
 void fillSuits();
+
 Linked_list *loadDeck(FILE *);
 
-void  saveDeck(Linked_list * list, FILE *fptr);
-
 int checkCard(struct ListCard *deck_card);
+
+void saveDeck(Linked_list * list, FILE *fptr);
 
 int convertASCII(char cardValue);
 

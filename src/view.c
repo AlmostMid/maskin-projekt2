@@ -28,7 +28,6 @@ void emptyView(char lastCommand[], char message[]) {
 }
 
 void showDeck(Linked_list *deck_list, char command[], char statusMessage[]) {
-    // Creates an empty view
     if (deck_list == NULL) {
         emptyView(command, "No deck of cards is loaded");
         return;
@@ -37,28 +36,24 @@ void showDeck(Linked_list *deck_list, char command[], char statusMessage[]) {
     clearView();
     generateColumns();
 
-    // Foundation number
     int Fnum = 1;
     struct ListCard *current_card = deck_list->tail;
     char value, suit;
     max_num_of_rows = (int) deck_list->size / 7 + 1;
     max_num_of_rows = max_num_of_rows > 7 ? max_num_of_rows : 7;
 
-    // Loop determining whether a foundation should be printed or not
+
     for (int i = 1; i <= max_num_of_rows; i++) {
-        // Loop to print the cards in the columns
+
         for (int j = 0; j < NUM_OF_COLUMNS; ++j) {
             if (current_card == NULL) {
                 printf("\t");
                 continue;
             }
-
-            // Show faceUp
             if (strcasecmp("SW", command) == 0) {
                 value = current_card->value;
                 suit = current_card->suit;
             }
-                // Show faceDown
             else {
                 value = '[';
                 suit = ']';
@@ -68,7 +63,6 @@ void showDeck(Linked_list *deck_list, char command[], char statusMessage[]) {
             current_card = current_card->prev;
         }
 
-        // Only prints if uneven and less than 8. Only 4 foundations should be printed.
         if (i % 2 == 1 && i < 8) {
             printf("\t[]\tF%d\n", Fnum);
             Fnum++;
@@ -91,14 +85,10 @@ void generatePlayView(Linked_list *C_ptr[7], Linked_list *F_ptr[4], char lastCom
     int F_num = 1;
     char value, suit;
 
-    // This loop is for Foundations
     for (int i = 1; i <= max_num_of_rows; i++) {
 
-        // This loop is for Columns
         for (int j = 0; j < NUM_OF_COLUMNS; ++j) {
             current_column = C_ptr[j];
-
-            // Check if NULL
             if (current_column != NULL) {
                 current_card = current_column->head;
                 for (int k = 0; k < i - 1; ++k) {
@@ -113,7 +103,6 @@ void generatePlayView(Linked_list *C_ptr[7], Linked_list *F_ptr[4], char lastCom
                 continue;
             }
 
-            // Check if faceUp or faceDown
             if (current_card->faceDown == false) {
                 value = current_card->value;
                 suit = current_card->suit;
@@ -126,13 +115,13 @@ void generatePlayView(Linked_list *C_ptr[7], Linked_list *F_ptr[4], char lastCom
             printf("%c%c\t", value, suit);
         }
 
-        // Prints foundations
+
         Linked_list *current_foundation;
         struct ListCard *foundation_Card = NULL;
         if (i % 2 == 1 && i < 8) {
             current_foundation = F_ptr[F_num - 1];
 
-            // Check if NULL
+
             if (current_foundation->tail != NULL) {
                 foundation_Card = current_foundation->tail;
             }
@@ -173,7 +162,6 @@ void generateColumns() {
     printf("\n\n");
 }
 
-// Only used within this module
 void printCC(char lastCommand[], char message[]) {
     printf("\nLAST Command: %s \n", lastCommand);
     printf("Message: %s \n", message);

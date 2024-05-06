@@ -9,18 +9,18 @@
 #include "deck.h"
 #include "Linkedlists.h"
 
-void emptyView(char lastCommand[], char message[]);
-
 void showDeck(Linked_list *deck_list, char command[], char statusMessage[]);
 
-void generatePlayView(Linked_list *C_ptr[7], Linked_list *F_ptr[4], char lastCommand[], char message[]);
+void emptyView(char lastCommand[], char message[]);
 
 int calculateMaxRows(Linked_list *columns[]);
 
-void generateColumns();
+void generatePlayView(Linked_list *C_ptr[7], Linked_list *F_ptr[4], char lastCommand[], char message[]);
 
 void clearView();
 
+void generateColumns();
+
 void printCC(char lastCommand[], char message[]);
 
-#endif //MASKIN_PROJEKT2_VIEW_H
+#endif 

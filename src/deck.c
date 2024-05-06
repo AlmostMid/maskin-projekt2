@@ -75,11 +75,9 @@ int checkCard(struct ListCard *deck_card) {
 
 int convertASCII(char cardValue) {
     int value;
-    // 65 = A and 97 = a
     if (cardValue == 'A' || cardValue == 'a') {
         value = 0;
     }
-        // If between 1 and 10
     else if (cardValue >= '1' && cardValue <= '9') {
         value = cardValue - '0' - 1;
     } else {
@@ -109,7 +107,6 @@ Linked_list *loadDeck(FILE *fptr) {
     char line[4];
     Linked_list *cardDeck = createLinkedList();
 
-    // While file not empty, read a line, create a card, and add it to linked list.
     int lineNum = 1;
     while (fgets(line, sizeof(line), fptr) != NULL) {
         struct ListCard newCard;
@@ -129,7 +126,7 @@ Linked_list *loadDeck(FILE *fptr) {
             }
             emptyView("LD", buffer);
             deleteLinkedList(cardDeck);
-            free(num); // Free allocated memory
+            free(num); 
             return NULL;
         } else {
             appendCard(cardDeck, newCard);
@@ -150,7 +147,6 @@ void saveDeck(Linked_list *list, FILE *fptr) {
     char line[3];
     line[2] = '\n';
     struct ListCard *node = list->head;
-    // While linked list not null, write a card to the file.
     while (node != NULL) {
         struct ListCard *card = node;
         line[0] = card->value;

@@ -17,7 +17,6 @@ void runYukonGame() {
     Linked_list *loadedDeck = createLinkedList();
     bool deckLoaded = false;
     bool gameRunning = true;
-    // Start view
     emptyView("", "");
 
     while (gameRunning) {
@@ -92,10 +91,9 @@ bool playPhase(Linked_list **loadedDeck) {
         fgets(buf, sizeof(buf), stdin);
         int numOfInputs = sscanf(buf, "%s %s", command, arg);
 
-        // Check if the command contains "->" using strchr
         char *arrowPtr = strchr(buf, '-');
         if (arrowPtr != NULL && (strcasecmp("C", command) == 0 || strcasecmp("F", command) == 0)) {
-            *arrowPtr = '\0'; // Null-terminate at the arrow position
+            *arrowPtr = '\0'; 
             sscanf(buf, "%s %s %s", command, arg, arg + 3);
             strcat(arg, "->");
         }
