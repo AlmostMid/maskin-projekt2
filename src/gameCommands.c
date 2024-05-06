@@ -81,58 +81,33 @@ Linked_list *SI(Linked_list *firstPile, int split) {
 
 // Shuffle Deck Function
 Linked_list *SR(Linked_list *unshuffledPile) {
-    int numCards = unshuffledPile->size;
-
-    // If no cards, nothing to shuffle
-    if (numCards == 0) {
-        return NULL;
-    }
-
-    // Create a temporary array to hold the card nodes
-    struct ListCard **cards = malloc(numCards * sizeof(struct ListCard *));
-    if (!cards) {
-        printf("Memory allocation failed\n");
-        return NULL;
-    }
-
-    struct ListCard *node = unshuffledPile->head;
-    for (int i = 0; i < numCards; i++) {
-        if (node == NULL) {
-            printf("Error: Node is NULL while copying to array\n");
-            free(cards);
-            return NULL;
-        }
-        cards[i] = node;
-        node = node->next;
-    }
-
-    // Shuffle the cards array using Fisher-Yates
-    srand(time(0));
-    for (int i = numCards - 1; i > 0; i--) {
-        int j = rand() % (i + 1);
-        struct ListCard *temp = cards[i];
-        cards[i] = cards[j];
-        cards[j] = temp;
-    }
-
-    // Create the shuffled linked list
     Linked_list *shuffledPile = createLinkedList();
-    shuffledPile->head = cards[0];
-    shuffledPile->head->prev = NULL;
-    for (int i = 0; i < numCards - 1; i++) {
-        cards[i]->next = cards[i + 1];
-        cards[i + 1]->prev = cards[i];
+    srand(time(0));
+
+    struct ListCard *node = unshuffledPile->tail;
+    while (node != NULL) {
+        // Calculate a random placement within the ranges of the shuffled piles size.
+        // Add with 1 to avoid zero division error.
+        int placement = rand() % (shuffledPile->size + 1);
+
+        // Finds the placement in the shuffled pile, so we know where to insert
+        struct ListCard *shuffNode = shuffledPile->head;
+        for (int i = 0; i < placement - 1; i++) {
+            shuffNode = shuffNode->next;
+        }
+
+        // Randomize if the card is placed before or after the chosen placement
+        int before = rand() % 2;
+        insertNode(shuffledPile, node, shuffNode, before);
+
+        node = node->prev;
     }
-    shuffledPile->tail = cards[numCards - 1];
-    shuffledPile->tail->next = NULL;
-    shuffledPile->size = numCards;
 
-    // Free old list nodes
+    // Avoid memory leak of deck piles
     deleteLinkedList(unshuffledPile);
-    free(cards);
-
     return shuffledPile;
 }
+
 
 
 
