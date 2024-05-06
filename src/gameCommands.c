@@ -1,4 +1,9 @@
 #include "gameCommands.h"
+#include "view.h"
+#include "deck.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 // Function to load a deck from a specified file or a default file if no arguments are provided
 Linked_list *LD(char arg[], int numOfInputs) {
@@ -13,7 +18,6 @@ Linked_list *LD(char arg[], int numOfInputs) {
 
         FILE *file = fopen(filepath, "r"); // Open file for reading
 
-        /** If file exists */
         if (file != NULL) {
             deckLoader = loadDeck(file); // Load deck from file
             if (deckLoader != NULL) {
@@ -49,31 +53,55 @@ Linked_list *LD(char arg[], int numOfInputs) {
     return deckLoader; // Return the loaded deck
 }
 
+// Updated SI command to split and interleave the deck
 Linked_list *SI(Linked_list *firstPile, int split) {
     if (split <= 0 || split >= firstPile->size) {
         emptyView("SI", "ERROR! Split index out of bounds.");
         return NULL;
     }
 
-    // Create a new linked list for the second half
     Linked_list *secondPile = createLinkedList();
     struct ListCard *current = firstPile->head;
 
-    // Move to the split point
     for (int i = 0; i < split - 1; i++) {
         current = current->next;
     }
 
-    // Set the head of the second pile
     secondPile->head = current->next;
     current->next = NULL;  // Split the first pile
 
-    // Recalculate the sizes
     secondPile->size = firstPile->size - split;
     firstPile->size = split;
 
-    return secondPile;
+    // New pile for the shuffled deck
+    Linked_list *shuffledPile = createLinkedList();
+    struct ListCard *firstCurrent = firstPile->head;
+    struct ListCard *secondCurrent = secondPile->head;
+
+    while (firstCurrent != NULL && secondCurrent != NULL) {
+        appendCard(shuffledPile, *firstCurrent);
+        appendCard(shuffledPile, *secondCurrent);
+        firstCurrent = firstCurrent->next;
+        secondCurrent = secondCurrent->next;
+    }
+
+    // Append remaining cards
+    while (firstCurrent != NULL) {
+        appendCard(shuffledPile, *firstCurrent);
+        firstCurrent = firstCurrent->next;
+    }
+    while (secondCurrent != NULL) {
+        appendCard(shuffledPile, *secondCurrent);
+        secondCurrent = secondCurrent->next;
+    }
+
+    return shuffledPile;
 }
+
+// Other commands remain the same as your previous code.
+// Make sure to include SR, SD, P, gameMoves, and isMoveValid as they were originally defined in your file.
+
+
 
 
 Linked_list *SR(Linked_list *unshuffledPile) {
