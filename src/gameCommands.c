@@ -51,32 +51,41 @@ Linked_list *LD(char arg[], int numOfInputs) {
 
 // Split Deck Function
 Linked_list *SI(Linked_list *firstPile, int split) {
-    if (split <= 0 || split >= firstPile->size) {
-        emptyView("SI", "Invalid split value.");
+    if (split <= 0) {
+        emptyView("SI", "ERROR! Not able to split on 0 or non-numbers.");
+        return NULL;
+    } else if (split >= firstPile->size) {
+        emptyView("SI", "ERROR! Number bigger than the number of cards in the deck.");
         return NULL;
     }
 
-    // Create a new linked list for the second half
+    // Splits the deck into two decks, which should be interleaved
     Linked_list *secondPile = createLinkedList();
-    struct ListCard *node = firstPile->head;
 
-    // Traverse to the split point
-    for (int i = 0; i < split - 1; ++i) {
-        node = node->next;
+    struct ListCard *card = firstPile->head;
+    for (int i = 0; i < split; ++i) {
+        card = card->next;
     }
 
-    // Update the second pile's pointers
-    secondPile->head = node->next;
-    secondPile->head->prev = NULL;
-    secondPile->tail = firstPile->tail;
-    secondPile->size = firstPile->size - split;
+    moveCardFromOneLinkedListToAnother(firstPile, card, secondPile);
 
-    // Update the first pile's pointers
-    firstPile->tail = node;
-    node->next = NULL;
-    firstPile->size = split;
+    // Interleaves the two decks into a shuffled pile
+    Linked_list *shuffledPile = createLinkedList();
+    while (firstPile->size > 0 || secondPile->size > 0) {
+        if (firstPile->size > 0) {
+            prependCard(shuffledPile, *firstPile->tail);
+            removeNode(firstPile);
+        }
+        if (secondPile->size > 0) {
+            prependCard(shuffledPile, *secondPile->tail);
+            removeNode(secondPile);
+        }
+    }
 
-    return secondPile;
+    deleteLinkedList(firstPile);
+    deleteLinkedList(secondPile);
+
+    return shuffledPile;
 }
 
 // Shuffle Deck Function
